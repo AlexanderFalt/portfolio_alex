@@ -4,4 +4,7 @@ export const swedishVersion = {
         two: "en Fullstack",
         three: "utvecklare",
     },
+    firstWebsite: {
+        one: ""
+    }
 }
