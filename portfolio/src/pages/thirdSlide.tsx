@@ -1,0 +1,13 @@
+import { Box } from "@mui/material";
+
+export default function SecondWebsite() {
+    return(
+        <Box sx={{
+            bgcolor: "transparent",
+            width: "100vw",
+            height: "100vh"
+        }}>
+
+        </Box>
+    )
+}
