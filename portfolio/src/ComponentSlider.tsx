@@ -4,6 +4,7 @@ import {
   Box,
   IconButton,
   useTheme,
+  Button
 } from '@mui/material'
 import {
   ArrowBackIos,
@@ -11,11 +12,18 @@ import {
 } from '@mui/icons-material'
 import LinearProgress from '@mui/material/LinearProgress';
 
+type Lang = "Swe" | "Eng";
+type Mode = "Dark" | "Light";
+
 interface ComponentSliderProps {
   components: React.ReactElement[]; // Ensure this is explicitly typed as ReactNode[]
+  currentLang: Lang;
+  setCurrentLang: React.Dispatch<React.SetStateAction<Lang>>;
+  currentMode: Mode;
+  setCurrentMode: React.Dispatch<React.SetStateAction<Mode>>;
 }
 
-export default function ComponentSlider({ components }: ComponentSliderProps) {
+export default function ComponentSlider({ components, currentLang, setCurrentLang, currentMode, setCurrentMode }: ComponentSliderProps) {
   const theme = useTheme()
   const [activeIndex, setActiveIndex] = useState(0)
   const [progress, setProgress] = useState(100 / components.length)
@@ -49,8 +57,30 @@ export default function ComponentSlider({ components }: ComponentSliderProps) {
     >
 
     {/* Progress Bar */}
-    <Box sx={{width: "80%", position: "absolute", top: "2%", left: "10%"}}>
-      <LinearProgress variant="determinate" value={progress} color='primary' sx={{borderRadius: "5px", background: "#222"}}/>
+    <Box sx={{
+      width: "100%", 
+      position: "absolute", 
+      top: "2%", 
+      left: "0%", 
+      display: "flex", 
+      justifyContent: "space-evenly", 
+      alignItems: "center",
+      zIndex: 10,            // <-- lift it above the transformed slide
+      p: 0.5,
+      }}>
+      <Button variant='outlined' onClick={() => setCurrentLang(prev => prev === "Swe" ? "Eng" : "Swe")} sx={{
+        width: "4%",
+      }}>
+        {currentLang == "Swe" ? "Swe" : "Eng"}
+      </Button>
+      <Box sx={{width: "80%"}}>
+        <LinearProgress variant="determinate" value={progress} color='primary' sx={{borderRadius: "5px", background: currentMode == "Dark" ? "#222" : "#CCC" }}/>
+      </Box>
+      <Button variant='outlined' onClick={() => setCurrentMode(prev => prev === "Dark" ? "Light" : "Dark")} sx={{
+        width: "4%",
+      }}>
+        {currentMode == "Dark" ? "Dark" : "Light"}
+      </Button>
     </Box>
 
     <Box
@@ -60,6 +90,7 @@ export default function ComponentSlider({ components }: ComponentSliderProps) {
         width: `${components.length * 100}vw`,
         transition: 'transform 0.5s ease',
         transform: `translateX(-${activeIndex * 100}vw)`,
+        
       }}
     >
       {components.map((child, idx) => {
@@ -93,7 +124,7 @@ export default function ComponentSlider({ components }: ComponentSliderProps) {
           top: '50%',
           left: theme.spacing(3),
           transform: 'translateY(-50%)',
-          color: theme.palette.common.white,
+          color: currentMode == "Dark" ? theme.palette.common.white : theme.palette.common.black,
           bgcolor: "transparent",
           '&:hover': { bgcolor: theme.palette.action.selected },
         }}
@@ -108,7 +139,7 @@ export default function ComponentSlider({ components }: ComponentSliderProps) {
           top: '50%',
           right: theme.spacing(3),
           transform: 'translateY(-50%)',
-          color: theme.palette.common.white,
+          color: currentMode == "Dark" ? theme.palette.common.white : theme.palette.common.black,
           bgcolor: "transparent",
           '&:hover': { bgcolor: theme.palette.action.selected },
         }}

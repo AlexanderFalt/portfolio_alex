@@ -3,7 +3,8 @@ import {
 } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 import { themeDark } from './themeDark.tsx';
-// import { themeLight } from './themeLight.tsx';
+import { useState } from 'react';
+import { themeLight } from './themeLight.tsx';
 
 //Components
 import ComponentSlider from './ComponentSlider.tsx';
@@ -12,15 +13,17 @@ import FirstWebsite from './pages/SecondSlide.tsx';
 import SecondWebsite from './pages/thirdSlide.tsx';
 
 function App() {
+  const [currentLang, setCurrentLang] = useState<"Swe" | "Eng">("Eng")  
+  const [currentMode, setCurrentMode] = useState<"Dark" | "Light">("Dark")
 
   const components = [
-    <Introducation/>,
-    <FirstWebsite/>,
-    <SecondWebsite/>
+    <Introducation lang={currentLang}/>,
+    <FirstWebsite lang={currentLang}/>,
+    <SecondWebsite lang={currentLang}/>
   ]
 
   return (
-    <ThemeProvider theme={themeDark}>
+    <ThemeProvider theme={currentMode == "Dark" ? themeDark : themeLight}>
       <Box
         sx={{
           bgcolor: 'background.default',
@@ -28,7 +31,13 @@ function App() {
           minHeight: '100vh',
         }}
       >
-        <ComponentSlider components={components}/>
+        <ComponentSlider
+          components={components}
+          currentLang={currentLang}
+          setCurrentLang={setCurrentLang}
+          currentMode={currentMode}
+          setCurrentMode={setCurrentMode}
+        />
       </Box>
     </ThemeProvider>
   )
