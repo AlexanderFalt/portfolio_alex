@@ -1,9 +1,12 @@
 import { 
     Box,
-    Typography
+    Typography,
+    Button
  } from "@mui/material";
 import { swedishVersion } from "../constants/swedishVersion";
 import { englishVersion } from "../constants/englishVersion";
+import { useTheme } from "@mui/material/styles";
+import Coworkify from '../assets/Coworkify.svg';
 
 type Lang = "Swe" | "Eng"
 interface LanguageProps {
@@ -11,6 +14,7 @@ interface LanguageProps {
 }
 
 export default function FirstWebsite({lang} : LanguageProps) {
+    const theme = useTheme()
     const langObject = lang === "Eng"
     ? englishVersion
     : swedishVersion
@@ -23,8 +27,33 @@ export default function FirstWebsite({lang} : LanguageProps) {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            fontFamily: "Montserrat",
         }}>
-            <Typography variant="h1">{langObject.intro.one}</Typography>
+            <Box sx={{ 
+                width: "70vw", 
+                height: "50vh", 
+                borderRadius: "8px",
+                display: "flex",
+                flexDirection: "row"
+            }}>
+                <Box sx={{height: "100%", width: "40%", padding: "2%"}}>
+                    <Typography sx={{opacity: 1, color: theme.palette.mode == "dark" ? "#fff" : "#000", fontWeight: "600", fontSize: "clamp(2.5rem, 10vw, 4rem)"}} variant="h3">Coworkify</Typography>
+                    <Typography sx={{opacity: 1, color: theme.palette.mode == "dark" ? "#fff" : "#000", fontWeight: "400", fontSize: "clamp(1.2rem, 10vw, 1.5rem)", margin: "20px 5px"}} variant="body1">{langObject.firstWebsite.one}</Typography>                    
+                    <Button variant={'contained'} sx={{
+                        borderRadius: 2,
+                        color: "#fff",
+                        background: theme.palette.secondary.main,
+                        marginTop: "10px",
+                        width: "100%",
+                        height: "4vh"
+                    }}>
+                        {langObject.firstWebsite.button}
+                    </Button>
+                </Box>
+                <Box sx={{height: "100%", width: "60%", display: "flex", alignItems: "center", justifyContent: "center"}}>
+                    <Box component={'img'} src={Coworkify} sx={{width: "92%", borderRadius: "8px", border: "1px solid black"}}/>
+                </Box>
+            </Box>
         </Box>
     )
 }

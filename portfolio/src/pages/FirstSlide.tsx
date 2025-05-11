@@ -1,8 +1,9 @@
 import { 
     Box,
     Typography,
-    Button
- } from "@mui/material";
+    Button,
+    Link
+} from "@mui/material";
 import {
     useTheme,
 } from '@mui/material/styles';
@@ -73,7 +74,7 @@ export default function Introduction( { lang }: LanguageProps) {
                 gap: "10px",
                 flexDirection: "column",
             }}>
-                <Button variant="contained" sx={{
+                <Button variant="contained" component={Link} href="https://x.com/AlexanderF59905" target="_blank" referrerPolicy="no-referrer" sx={{
                     borderRadius: 2,
                     color: "#fff",
                     background: theme.palette.secondary.main
@@ -83,7 +84,7 @@ export default function Introduction( { lang }: LanguageProps) {
                     </Box>
                     Twitter
                 </Button>
-                <Button variant="contained" sx={{
+                <Button variant="contained" component={Link} href="https://www.linkedin.com/in/alexander-f%C3%A4ltskog-971208277/" target="_blank" referrerPolicy="no-referrer" sx={{
                     borderRadius: 2,
                     color: "#fff",
                     background: theme.palette.secondary.main
