@@ -6,6 +6,24 @@ import { swedishVersion } from "../constants/swedishVersion";
 import { englishVersion } from "../constants/englishVersion";
 import { useTheme } from "@mui/material/styles";
 import DarkGit from '../assets/logos/dark/git_dark.svg';
+import LightGit from '../assets/logos/light/git_light.svg';
+import DarkAngular from '../assets/logos/dark/angular_dark.svg';
+import LightAngular from '../assets/logos/dark/angular_light.svg';
+import DarkJava from '../assets/logos/dark/java_dark.svg';
+import LightJava from '../assets/logos/light/java_light.svg';
+import DarkJavascript from '../assets/logos/dark/javascript_dark.svg';
+import LightJavascript from '../assets/logos/light/javascript_light.svg';
+import DarkLinux from '../assets/logos/dark/linux_dark.svg';
+import LightLinux from '../assets/logos/light/linux_light.svg';
+import DarkMui from '../assets/logos/dark/materialUi_dark.svg';
+import LightMui from '../assets/logos/light/materialUi_light.svg';
+import DarkMongo from '../assets/logos/dark/mongo_dark.svg';
+import LightMongo from '../assets/logos/light/mongo_light.svg';
+import DarkNode from '../assets/logos/dark/node_dark.svg';
+import LightNode from '../assets/logos/node_light.svg';
+import DarkPython from '../assets/logos/dark/python_dark.svg';
+import LightPython from '../assets/logos/light/python_light.svg';
+import Dark
 
 type Lang = "Swe" | "Eng"
 interface LanguageProps {
