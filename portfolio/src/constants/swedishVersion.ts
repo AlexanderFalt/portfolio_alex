@@ -14,12 +14,12 @@ export const swedishVersion = {
     },
     technologies: {
         one: "Mina tekniker",
-        two: "Jag har jobbat med en rad olika ramverk och bibliotek för frontend, där Angular och React är mina främsta verktyg. För styling och komponenter har jag nyligen använt Material UI. \n\n På backend-sidan kan jag både JavaScript (med Express) och Java (med Spring Boot). \n\n Och förstås brinner jag för att hela tiden lära mig nya teknologier!"
+        two: "Jag har jobbat med en rad olika ramverk och bibliotek för **frontend**, där **Angular** och **React** är mina främsta verktyg. För styling och komponenter har jag nyligen använt Material UI. \n\n På **backend**-sidan kan jag både JavaScript (med **Express**) och Java (med **Spring Boot**). \n\n Och förstås brinner jag för att hela tiden **lära mig** nya teknologier!"
     },
     conclustion: {
         one: "Var kan du nå mig?",
-        two: "Skicka gärna ett meddelande till 070 840 21 56",
-        three: "Eller mejla mig på: faltskog.alexander@gmail.com",
+        two: "Skicka gärna ett meddelande till **070 840 21 56**",
+        three: "Eller mejla mig på: **faltskog.alexander@gmail.com**",
         four: "Det var\nallt!",
         button: "Sicka ett mail till mig!"
     }

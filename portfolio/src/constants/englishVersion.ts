@@ -14,12 +14,12 @@ export const englishVersion = {
     },
     technologies: {
         one: "My Technologies",
-        two: `I’ve worked with a wide range of frontend libraries and frameworks—most notably Angular and React—and recently have been using Material UI for styling and components. \n \n On the backend, I know in both JavaScript (using Express) and Java (using Spring Boot). \n \n And of course, I’m always excited to explore and learn new technologies!`,
+        two: `I’ve worked with a wide range of **frontend** libraries and frameworks—most notably **Angular** and **React** recently I have been using Material UI for styling and components. \n \n On the **backend**, I know in both JavaScript (using **Express**) and Java (using **Spring Boot**). \n \n And of course, I’m always excited to explore and **learn new technologies!**`,
     },
     conclustion: {
         one: "Where to contact me?",
-        two: "Feel free to send me an message at 070 840 21 56",
-        three: "Or you can send me an email at: faltskog.alexander@gmail.com",
+        two: "Feel free to send me an message at **070 840 21 56**",
+        three: "Or you can send me an email at: **faltskog.alexander@gmail.com**",
         four: "Thats\nAll!",
         button: "Send me an Email!"
     }

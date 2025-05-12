@@ -4,6 +4,7 @@ import {
 } from "@mui/material";
 import { swedishVersion } from "../constants/swedishVersion";
 import { englishVersion } from "../constants/englishVersion";
+import ReactMarkdown from 'react-markdown';
 import { useTheme } from "@mui/material/styles";
 import DarkGit from '../assets/logos/dark/git_dark.svg';
 import LightGit from '../assets/logos/light/git_light.svg';
@@ -58,7 +59,27 @@ export default function Technologies({lang} : LanguageProps) {
             { isMobile ? (
                 <Box sx={{width: "80vw", height: "60vh"}}>
                     <Typography variant="h3" sx={{opacity: 1, marginBottom: "2%", color: theme.palette.mode == "dark" ? "#fff" : "#000", fontWeight: "600", fontSize: "clamp(1.5rem, 10vw, 4rem)"}}>{langObject.technologies.one}</Typography>
-                    <Typography sx={{opacity: 1, color: theme.palette.mode == "dark" ? "#fff" : "#000", fontWeight: "400", fontSize: "clamp(0.75rem, 10vw, 1.5rem)", margin: "20px 5px", whiteSpace: "pre-line", }} variant="body1">{langObject.technologies.two}</Typography>
+                    <ReactMarkdown
+                        components={{
+                            p: ({ children }) => (
+                            <Typography
+                                variant="body1"
+                                sx={{
+                                opacity: 1,
+                                color: theme.palette.mode === "dark" ? "#fff" : "#000",
+                                fontWeight: "400",
+                                fontSize: "clamp(0.75rem, 10vw, 1.5rem)",
+                                margin: "20px 5px",
+                                whiteSpace: "pre-line",
+                                }}
+                            >
+                                {children}
+                            </Typography>
+                            ),
+                        }}
+                        >
+                        {langObject.technologies.two}
+                        </ReactMarkdown>
                     <Box sx={{height: "30%", width: "100%", display: "flex", alignItems: "center", justifyContent: "space-evenly"}}>
                         {theme.palette.mode == "dark" ? (
                             <>
@@ -98,7 +119,12 @@ export default function Technologies({lang} : LanguageProps) {
             ) : (
                 <Box sx={{width: "80vw", height: "85vh", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column"}}>
                 <Typography variant="h3" sx={{opacity: 1, marginBottom: "2%", color: theme.palette.mode == "dark" ? "#fff" : "#000", fontWeight: "600", fontSize: "clamp(1.5rem, 10vw, 2rem)", width: "100%"}}>{langObject.technologies.one}</Typography>
-                <Typography sx={{opacity: 1, color: theme.palette.mode == "dark" ? "#fff" : "#000", fontWeight: "400", fontSize: "clamp(0.75rem, 10vw, 1rem)", margin: "20px 5px", whiteSpace: "pre-line", }} variant="body1">{langObject.technologies.two}</Typography>
+                <ReactMarkdown
+                    components={{ p: ({ children }) => (
+                    <Typography sx={{opacity: 1, color: theme.palette.mode == "dark" ? "#fff" : "#000", fontWeight: "400", fontSize: "clamp(0.75rem, 10vw, 1rem)", margin: "20px 5px", whiteSpace: "pre-line", }} variant="body1">{children}</Typography>
+                ),}}>
+                    {langObject.technologies.two}
+                </ReactMarkdown>
                 <Box sx={{width: "100%", display: "flex", alignItems: "center", justifyContent: "space-evenly"}}>
                     {theme.palette.mode == "dark" ? (
                         <>
