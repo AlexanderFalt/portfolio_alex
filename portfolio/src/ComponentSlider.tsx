@@ -11,6 +11,14 @@ import {
   ArrowForwardIos,
 } from '@mui/icons-material'
 import LinearProgress from '@mui/material/LinearProgress';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import DarkEnglishFlag from './assets/flags/english_dark.svg';
+import LightEnglishFlag from './assets/flags/english_light.svg';
+import DarkSwedishFlag from './assets/flags/swedish_dark.svg';
+import LightSwedishFlag from './assets/flags/swedish_light.svg';
+
+
 
 type Lang = "Swe" | "Eng";
 type Mode = "Dark" | "Light";
@@ -71,7 +79,8 @@ export default function ComponentSlider({ components, currentLang, setCurrentLan
       <Button variant='outlined' onClick={() => setCurrentLang(prev => prev === "Swe" ? "Eng" : "Swe")} sx={{
         width: "4%",
       }}>
-        {currentLang == "Swe" ? "Swe" : "Eng"}
+
+        {currentLang == "Swe" ? "Eng" : "Swe"}
       </Button>
       <Box sx={{width: "80%"}}>
         <LinearProgress variant="determinate" value={progress} color='primary' sx={{borderRadius: "5px", background: currentMode == "Dark" ? "#222" : "#CCC" }}/>
@@ -79,7 +88,8 @@ export default function ComponentSlider({ components, currentLang, setCurrentLan
       <Button variant='outlined' onClick={() => setCurrentMode(prev => prev === "Dark" ? "Light" : "Dark")} sx={{
         width: "4%",
       }}>
-        {currentMode == "Dark" ? "Dark" : "Light"}
+        {currentMode == "Dark" ? <LightModeIcon fontSize="small"/> : <DarkModeIcon fontSize="small"/>}
+        {currentMode == "Dark" ? "Light" : "Dark"}
       </Button>
     </Box>
 
