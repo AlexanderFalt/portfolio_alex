@@ -13,11 +13,6 @@ import {
 import LinearProgress from '@mui/material/LinearProgress';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
-import DarkEnglishFlag from './assets/flags/english_dark.svg';
-import LightEnglishFlag from './assets/flags/english_light.svg';
-import DarkSwedishFlag from './assets/flags/swedish_dark.svg';
-import LightSwedishFlag from './assets/flags/swedish_light.svg';
-
 
 
 type Lang = "Swe" | "Eng";
@@ -79,7 +74,6 @@ export default function ComponentSlider({ components, currentLang, setCurrentLan
       <Button variant='outlined' onClick={() => setCurrentLang(prev => prev === "Swe" ? "Eng" : "Swe")} sx={{
         width: "4%",
       }}>
-
         {currentLang == "Swe" ? "Eng" : "Swe"}
       </Button>
       <Box sx={{width: "80%"}}>

@@ -1,11 +1,11 @@
 import { 
     Box,
     Typography,
-    Button
 } from "@mui/material";
 import { swedishVersion } from "../constants/swedishVersion";
 import { englishVersion } from "../constants/englishVersion";
 import { useTheme } from "@mui/material/styles";
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 type Lang = "Swe" | "Eng"
 interface LanguageProps {
@@ -14,6 +14,7 @@ interface LanguageProps {
 
 export default function Conclusion({lang} : LanguageProps) {
     const theme = useTheme()
+    const isMobile = useMediaQuery(theme.breakpoints.up('md'));
     const langObject = lang === "Eng"
     ? englishVersion
     : swedishVersion
@@ -29,24 +30,31 @@ export default function Conclusion({lang} : LanguageProps) {
             fontFamily: "Montserrat",
             flexDirection: "row"
         }}>
-            <Box sx={{width: "40vw", height: "60vh", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column"}}>
-                <Typography variant="h3" sx={{opacity: 1, marginBottom: "2%", color: theme.palette.mode == "dark" ? "#fff" : "#000", fontWeight: "600", fontSize: "clamp(2.5rem, 10vw, 4rem)", width: "100%"}}>{langObject.conclustion.one}</Typography>
-                <Typography sx={{opacity: 1, color: theme.palette.mode == "dark" ? "#fff" : "#000", fontWeight: "400", fontSize: "clamp(1.2rem, 10vw, 1.5rem)", margin: "20px 5px", width: "100%" }} variant="body1">{langObject.conclustion.two}</Typography>
-                <Typography sx={{opacity: 1, color: theme.palette.mode == "dark" ? "#fff" : "#000", fontWeight: "400", fontSize: "clamp(1.2rem, 10vw, 1.5rem)", margin: "20px 5px", width: "100%" }} variant="body1">{langObject.conclustion.three}</Typography>
-                <Button variant="contained" sx={{
-                    borderRadius: 2,
-                    color: "#fff",
-                    background: theme.palette.secondary.main,
-                    marginTop: "10px",
-                    width: "100%",
-                    height: "4vh"
-                }}>
-                    {langObject.conclustion.button}
-                </Button>
-            </Box>
-            <Box sx={{width: "40vw", height: "60vh", display: "flex", alignItems: "center", justifyContent: "center"}}>
-                <Typography variant="h3" sx={{opacity: 1, marginBottom: "2%", color: theme.palette.mode == "dark" ? "#fff" : "#000", fontWeight: "600", fontSize: "clamp(4.5rem, 10vw, 6rem)", whiteSpace: "pre-line", textAlign: "center" }}>{langObject.conclustion.four}</Typography>
-            </Box>
+            {isMobile ? (
+            <>
+                <Box sx={{width: "40vw", height: "60vh", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column"}}>
+                    <Typography variant="h3" sx={{opacity: 1, marginBottom: "2%", color: theme.palette.mode == "dark" ? "#fff" : "#000", fontWeight: "600", fontSize: "clamp(2.5rem, 10vw, 4rem)", width: "100%"}}>{langObject.conclustion.one}</Typography>
+                    <Typography sx={{opacity: 1, color: theme.palette.mode == "dark" ? "#fff" : "#000", fontWeight: "400", fontSize: "clamp(1.2rem, 10vw, 1.5rem)", margin: "20px 5px", width: "100%" }} variant="body1">{langObject.conclustion.two}</Typography>
+                    <Typography sx={{opacity: 1, color: theme.palette.mode == "dark" ? "#fff" : "#000", fontWeight: "400", fontSize: "clamp(1.2rem, 10vw, 1.5rem)", margin: "20px 5px", width: "100%" }} variant="body1">{langObject.conclustion.three}</Typography>
+                    
+                </Box>
+                <Box sx={{width: "40vw", height: "60vh", display: "flex", alignItems: "center", justifyContent: "center"}}>
+                    <Typography variant="h3" sx={{opacity: 1, marginBottom: "2%", color: theme.palette.mode == "dark" ? "#fff" : "#000", fontWeight: "600", fontSize: "clamp(4.5rem, 10vw, 6rem)", whiteSpace: "pre-line", textAlign: "center" }}>{langObject.conclustion.four}</Typography>
+                </Box> 
+            </>
+            ) : (
+            <>
+                <Box sx={{width: "40vw", height: "60vh", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column"}}>
+                    <Typography variant="h3" sx={{opacity: 1, marginBottom: "2%", color: theme.palette.mode == "dark" ? "#fff" : "#000", fontWeight: "600", fontSize: "clamp(1.5rem, 10vw, 2rem)", width: "100%"}}>{langObject.conclustion.one}</Typography>
+                    <Typography sx={{opacity: 1, color: theme.palette.mode == "dark" ? "#fff" : "#000", fontWeight: "400", fontSize: "clamp(0.8rem, 10vw, 1rem)", margin: "20px 5px", width: "100%" }} variant="body1">{langObject.conclustion.two}</Typography>
+                    <Typography sx={{opacity: 1, color: theme.palette.mode == "dark" ? "#fff" : "#000", fontWeight: "400", fontSize: "clamp(0.8rem, 10vw, 1rem)", margin: "20px 5px", width: "100%" }} variant="body1">{langObject.conclustion.three}</Typography>
+                    
+                </Box>
+                <Box sx={{width: "40vw", height: "60vh", display: "flex", alignItems: "center", justifyContent: "center"}}>
+                    <Typography variant="h3" sx={{opacity: 1, marginBottom: "2%", color: theme.palette.mode == "dark" ? "#fff" : "#000", fontWeight: "600", fontSize: "clamp(2.5rem, 10vw, 4rem)", whiteSpace: "pre-line", textAlign: "center" }}>{langObject.conclustion.four}</Typography>
+                </Box>
+            </>
+            )}
         </Box>
     )
 }

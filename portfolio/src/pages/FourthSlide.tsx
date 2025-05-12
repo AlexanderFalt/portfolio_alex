@@ -31,6 +31,7 @@ import DarkTailwind from '../assets/logos/dark/tailwind_dark.svg';
 import LightTailwind from '../assets/logos/light/tailwind_light.svg';
 import DarkTypescript from '../assets/logos/dark/typescript_dark.svg';
 import LightTypescript from '../assets/logos/light/typescript_light.svg';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 type Lang = "Swe" | "Eng"
 interface LanguageProps {
@@ -39,6 +40,7 @@ interface LanguageProps {
 
 export default function Technologies({lang} : LanguageProps) {
     const theme = useTheme()
+    const isMobile = useMediaQuery(theme.breakpoints.up('md'));
     const langObject = lang === "Eng"
     ? englishVersion
     : swedishVersion
@@ -53,46 +55,87 @@ export default function Technologies({lang} : LanguageProps) {
             justifyContent: "center",
             fontFamily: "Montserrat",
         }}>
-            <Box sx={{width: "80vw", height: "60vh"}}>
-                <Typography variant="h3" sx={{opacity: 1, marginBottom: "2%", color: theme.palette.mode == "dark" ? "#fff" : "#000", fontWeight: "600", fontSize: "clamp(2.5rem, 10vw, 4rem)"}}>{langObject.technologies.one}</Typography>
-                <Typography sx={{opacity: 1, color: theme.palette.mode == "dark" ? "#fff" : "#000", fontWeight: "400", fontSize: "clamp(1.2rem, 10vw, 1.5rem)", margin: "20px 5px", whiteSpace: "pre-line", }} variant="body1">{langObject.technologies.two}</Typography>
-                
-                <Box sx={{height: "30%", width: "100%", display: "flex", alignItems: "center", justifyContent: "space-evenly"}}>
+            { isMobile ? (
+                <Box sx={{width: "80vw", height: "60vh"}}>
+                    <Typography variant="h3" sx={{opacity: 1, marginBottom: "2%", color: theme.palette.mode == "dark" ? "#fff" : "#000", fontWeight: "600", fontSize: "clamp(1.5rem, 10vw, 4rem)"}}>{langObject.technologies.one}</Typography>
+                    <Typography sx={{opacity: 1, color: theme.palette.mode == "dark" ? "#fff" : "#000", fontWeight: "400", fontSize: "clamp(0.75rem, 10vw, 1.5rem)", margin: "20px 5px", whiteSpace: "pre-line", }} variant="body1">{langObject.technologies.two}</Typography>
+                    <Box sx={{height: "30%", width: "100%", display: "flex", alignItems: "center", justifyContent: "space-evenly"}}>
+                        {theme.palette.mode == "dark" ? (
+                            <>
+                                <Box component="img" src={LightGit} sx={{}}/>
+                                <Box component="img" src={LightAngular} sx={{}}/>
+                                <Box component="img" src={LightJava} sx={{}}/>
+                                <Box component="img" src={LightJavascript} sx={{}}/>
+                                <Box component="img" src={LightLinux} sx={{}}/>
+                                <Box component="img" src={LightMui} sx={{}}/>
+                                <Box component="img" src={LightMongo} sx={{}}/>
+                                <Box component="img" src={LightNode} sx={{}}/>
+                                <Box component="img" src={LightPython} sx={{}}/>
+                                <Box component="img" src={LightReact} sx={{}}/>
+                                <Box component="img" src={LightSql} sx={{}}/>
+                                <Box component="img" src={LightTailwind} sx={{}}/>
+                                <Box component="img" src={LightTypescript} sx={{}}/>
+                            </>
+                        ) : (
+                            <>
+                                <Box component="img" src={DarkGit} sx={{}}/>
+                                <Box component="img" src={DarkAngular} sx={{}}/>
+                                <Box component="img" src={DarkJava} sx={{}}/>
+                                <Box component="img" src={DarkJavascript} sx={{}}/>
+                                <Box component="img" src={DarkLinux} sx={{}}/>
+                                <Box component="img" src={DarkMui} sx={{}}/>
+                                <Box component="img" src={DarkMongo} sx={{}}/>
+                                <Box component="img" src={DarkNode} sx={{}}/>
+                                <Box component="img" src={DarkPython} sx={{}}/>
+                                <Box component="img" src={DarkReact} sx={{}}/>
+                                <Box component="img" src={DarkSql} sx={{}}/>
+                                <Box component="img" src={DarkTailwind} sx={{}}/>
+                                <Box component="img" src={DarkTypescript} sx={{}}/>
+                            </>
+                        )}
+                    </Box>
+                </Box>
+            ) : (
+                <Box sx={{width: "80vw", height: "85vh", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column"}}>
+                <Typography variant="h3" sx={{opacity: 1, marginBottom: "2%", color: theme.palette.mode == "dark" ? "#fff" : "#000", fontWeight: "600", fontSize: "clamp(1.5rem, 10vw, 2rem)", width: "100%"}}>{langObject.technologies.one}</Typography>
+                <Typography sx={{opacity: 1, color: theme.palette.mode == "dark" ? "#fff" : "#000", fontWeight: "400", fontSize: "clamp(0.75rem, 10vw, 1rem)", margin: "20px 5px", whiteSpace: "pre-line", }} variant="body1">{langObject.technologies.two}</Typography>
+                <Box sx={{width: "100%", display: "flex", alignItems: "center", justifyContent: "space-evenly"}}>
                     {theme.palette.mode == "dark" ? (
                         <>
-                            <Box component="img" src={LightGit} sx={{}}/>
-                            <Box component="img" src={LightAngular} sx={{}}/>
-                            <Box component="img" src={LightJava} sx={{}}/>
-                            <Box component="img" src={LightJavascript} sx={{}}/>
-                            <Box component="img" src={LightLinux} sx={{}}/>
-                            <Box component="img" src={LightMui} sx={{}}/>
-                            <Box component="img" src={LightMongo} sx={{}}/>
-                            <Box component="img" src={LightNode} sx={{}}/>
-                            <Box component="img" src={LightPython} sx={{}}/>
-                            <Box component="img" src={LightReact} sx={{}}/>
-                            <Box component="img" src={LightSql} sx={{}}/>
-                            <Box component="img" src={LightTailwind} sx={{}}/>
-                            <Box component="img" src={LightTypescript} sx={{}}/>
+                            <Box component="img" src={LightGit} sx={{width: 20}}/>
+                            <Box component="img" src={LightAngular} sx={{width: 20}}/>
+                            <Box component="img" src={LightJava} sx={{width: 20}}/>
+                            <Box component="img" src={LightJavascript} sx={{width: 20}}/>
+                            <Box component="img" src={LightLinux} sx={{width: 20}}/>
+                            <Box component="img" src={LightMui} sx={{width: 20}}/>
+                            <Box component="img" src={LightMongo} sx={{width: 20}}/>
+                            <Box component="img" src={LightNode} sx={{width: 20}}/>
+                            <Box component="img" src={LightPython} sx={{width: 20}}/>
+                            <Box component="img" src={LightReact} sx={{width: 20}}/>
+                            <Box component="img" src={LightSql} sx={{width: 20}}/>
+                            <Box component="img" src={LightTailwind} sx={{width: 20}}/>
+                            <Box component="img" src={LightTypescript} sx={{width: 20}}/>
                         </>
                     ) : (
                         <>
-                            <Box component="img" src={DarkGit} sx={{}}/>
-                            <Box component="img" src={DarkAngular} sx={{}}/>
-                            <Box component="img" src={DarkJava} sx={{}}/>
-                            <Box component="img" src={DarkJavascript} sx={{}}/>
-                            <Box component="img" src={DarkLinux} sx={{}}/>
-                            <Box component="img" src={DarkMui} sx={{}}/>
-                            <Box component="img" src={DarkMongo} sx={{}}/>
-                            <Box component="img" src={DarkNode} sx={{}}/>
-                            <Box component="img" src={DarkPython} sx={{}}/>
-                            <Box component="img" src={DarkReact} sx={{}}/>
-                            <Box component="img" src={DarkSql} sx={{}}/>
-                            <Box component="img" src={DarkTailwind} sx={{}}/>
-                            <Box component="img" src={DarkTypescript} sx={{}}/>
+                            <Box component="img" src={DarkGit} sx={{width: 20}}/>
+                            <Box component="img" src={DarkAngular} sx={{width: 20}}/>
+                            <Box component="img" src={DarkJava} sx={{width: 20}}/>
+                            <Box component="img" src={DarkJavascript} sx={{width: 20}}/>
+                            <Box component="img" src={DarkLinux} sx={{width: 20}}/>
+                            <Box component="img" src={DarkMui} sx={{width: 20}}/>
+                            <Box component="img" src={DarkMongo} sx={{width: 20}}/>
+                            <Box component="img" src={DarkNode} sx={{width: 20}}/>
+                            <Box component="img" src={DarkPython} sx={{width: 20}}/>
+                            <Box component="img" src={DarkReact} sx={{width: 20}}/>
+                            <Box component="img" src={DarkSql} sx={{width: 20}}/>
+                            <Box component="img" src={DarkTailwind} sx={{width: 20}}/>
+                            <Box component="img" src={DarkTypescript} sx={{width: 20}}/>
                         </>
                     )}
                 </Box>
             </Box>
+        )}
         </Box>
     )
 }
